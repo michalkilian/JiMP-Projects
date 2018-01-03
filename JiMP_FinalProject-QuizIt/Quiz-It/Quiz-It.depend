@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1513420686 source:c:\users\micha³\0programowanie\jimp\jimp_project-quizit\quiz-it\main.c
+	<stdio.h>
+	<stdlib.h>
+	<unistd.h>
+	<string.h>
+

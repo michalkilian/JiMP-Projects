@@ -1,0 +1,34 @@
+Which of the following special symbol allowed in a variable name? #* (asterisk) #| (pipeline) #- (hyphen) #_ (underscore) #4
+How would you round off a value from 1.66 to 2.0? #ceil(1.66) #floor(1.66)#roundup(1.66)#roundto(1.66)#1
+By default a real number is treated as a #float #double #long double #far double #2
+When we mention the prototype of a function? #Defining #Declaring #Prototyping #Calling #2
+Which of the declaration is correct? #int length; #char int; #int long; #float double; #1
+Which of the following correctly shows the hierarchy of arithmetic operations in C? #/ + * - #* - / + #+ - / * #/ * + - #4
+The keyword used to transfer control from a function back to the calling function is #switch #goto #go back #return #1
+What is (void*)0? #Representation of NULL pointer #Representation of void pointer #Error #None of above #
+If a variable is a pointer to a structure, then which of the following operator is used to access data members of the structure through the pointer variable? #. #& #* #-> #D
+A pointer is #A keyword used to create variables #A variable that stores address of an instruction #A variable that stores address of other variable #All of the above #C
+The operator used to get value at address stored in a pointer variable is #* #& #&& #|| #A
+Which of the following function sets first n characters of a string to a given character? #strinit() #strnset() #strset() #strcset()
+If the two strings are identical, then strcmp() function returns #-1 #0 #1 #Yes #B
+How will you print \n on the screen? #printf("\n"); #echo "\\n"; #printf('\n'); #printf("\\n"); #D
+Input/output function prototypes and macros are defined in which header file? #conio.h #stdlib.h #stdio.h #dos.h #C
+Which of the following is not logical operator? #& #&& #|| #! #A
+Which of the following cannot be checked in a switch-case statement? #Character #Integer #Float #enum #C
+The binary equivalent of 5.375 is #101.101110111 #101.011 #101011 #None of above #B
+What will you do to treat the constant 3.14 as a float? #use float(3.14f) #use 3.14f #use 3.14f #use (f)(3.14) #B
+What will happen if in a C program you assign a value to an array element whose subscript exceeds the size of array? #The element will be set to 0. #The compiler would report an error #The program may crash if some important data gets overwritten. #The array size would appropriately grow. #C
+In C, if you pass an array as an argument to a function, what actually gets passed? #Value of elements in array #First element of the array #Base address of the array #Address of the last element of array #C
+How will you free the allocated memory ? #remove(var-name); #free(var-name); #delete(var-name); #dalloc(var-name); #B
+What is the similarity between a structure, union and enumeration? #All of them let you define new values #All of them let you define new data types #All of them let you define new pointers #	All of them let you define new structures #B
+
+
+
+
+
+
+
+
+
+
+
