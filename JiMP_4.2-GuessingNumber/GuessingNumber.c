@@ -19,6 +19,9 @@ int wyborLiczby(void){
     if(liczba>10){
         printf("Wprowadzono numer wiêkszy od 10, automatycznie zredukowano do zadanego zakresu.\n");
         liczba=(liczba%10);
+        if (liczba == 0){
+            liczba++;
+        }
     }
     else if(liczba<1){
         printf("Wprowadzono numer mniejszy od 1, automatycznie podniesiono do zadanego zakresu.\n");

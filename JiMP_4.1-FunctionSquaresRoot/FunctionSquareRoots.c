@@ -2,32 +2,32 @@
 #include <stdio.h>
 #include <math.h>
 
-double wspolczynniki[3] = {0,0,0};
 
-void wczytywanieWspolczynnikow(void);
-double delta(void);
-void policzPierwiastki(double);
+void wczytywanieWspolczynnikow(double*);
+double delta(double*);
+void policzPierwiastki(double,double*);
 
 int main(void){
 
-    wczytywanieWspolczynnikow();
-    policzPierwiastki(delta());
+    double wspolczynniki[3] = {0,0,0};
+    wczytywanieWspolczynnikow(wspolczynniki);
+    policzPierwiastki(delta(wspolczynniki),wspolczynniki);
 
     return 0;
 }
 
-void wczytywanieWspolczynnikow(void){
+void wczytywanieWspolczynnikow(double wspolczynniki[3]){
 
     printf("Podaj wspolczynniki a2, a1 i a0 rownania kwadratowego: \n");
     scanf("%lf %lf %lf", &wspolczynniki[0], &wspolczynniki[1], &wspolczynniki[2]);
 }
 
-double delta(){
+double delta(double wspolczynniki[3]){
     double wartoscDelty = wspolczynniki[1]*wspolczynniki[1]-(4*wspolczynniki[0]*wspolczynniki[2]);
     return wartoscDelty;
 }
 
-void policzPierwiastki(double delta){
+void policzPierwiastki(double delta,double wspolczynniki[3]){
     if(wspolczynniki[0]==0){
         printf("Rownanie jest liniowe i ma 1 rozwiazanie: %f",(wspolczynniki[2]/wspolczynniki[1]*(-1)));
     }
