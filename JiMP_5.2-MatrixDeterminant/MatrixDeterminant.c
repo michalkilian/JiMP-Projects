@@ -2,13 +2,12 @@
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define SIZE 3
 
+#define SIZE 3
 
 void matrixFiller(int matrix[SIZE][SIZE]);
 void matrixPrinter(int matrix[SIZE][SIZE]);
-int matrixDet(int matrix[SIZE][SIZE]);
-
+int matrixDeterminant(int matrix[SIZE][SIZE]);
 
 int main(void){
 
@@ -19,7 +18,7 @@ int main(void){
     matrixFiller(matrix);
     printf("Wylosowana macierz to: \n");
     matrixPrinter(matrix);
-    printf("Wyznacznik tej macierzy to: %d", matrixDet(matrix));
+    printf("Wyznacznik tej macierzy to: %d", matrixDeterminant(matrix));
 
     return 0;
 }
@@ -43,7 +42,7 @@ void matrixPrinter(int matrix[SIZE][SIZE]){
     }
 }
 
-int matrixDet(int matrix[SIZE][SIZE]){
+int matrixDeterminant(int matrix[SIZE][SIZE]){
     int determinant = 0;
     for(int i = 0;i <3; ++i)
         determinant += (matrix[0][i]*(matrix[1][(i+1)%SIZE]*matrix[2][(i+2)%SIZE]) - (matrix[0][i]*matrix[1][(i+2)%SIZE]*matrix[2][(i+1)%SIZE]));

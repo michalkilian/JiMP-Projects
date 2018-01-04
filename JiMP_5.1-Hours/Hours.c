@@ -1,6 +1,7 @@
 //Zastosowano flagi:  -Wall -pedantic -Wextra -Werror -std=c99
 #include <stdio.h>
 #include <stdlib.h>
+
 #define SIZE 3
 
 void errorHandler(int hour[]);

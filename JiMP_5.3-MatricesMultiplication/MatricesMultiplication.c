@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+
 void matrixMultiplication(int matrix[2][2][2]);
 void matrixMerge(int matrix1[2][2], int matrix2[2][2], int mergedMatrix[2][2][2]);
 void matrixFiller(int matrix[2][2]);

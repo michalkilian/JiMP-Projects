@@ -30,9 +30,9 @@ void wybor(int* ifNumbersGenerated, int *numbers){
     int n = 0;
     printf("\t-----MENU-----\n\n1. Losowanie tablicy 10 liczb.\n\n2. Wyswietlanie tablicy\n\n3. Liczenie sredniej liczb"
     "\n\n4. Liczenie mediany liczb\n\n5. Liczenie min/max elementu\n\n6. Wyjscie\n\nPodaj liczbe: ");
-	scanf("%d", &n);
-	switch (n)
-	{
+    scanf("%d", &n);
+    switch (n)
+    {
         case 1:
             arrayGenerator(ifNumbersGenerated, numbers);
             break;
@@ -57,6 +57,7 @@ void wybor(int* ifNumbersGenerated, int *numbers){
             break;
     }
 }
+
 void arrayGenerator(int* ifNumbersGenerated, int* numbers){
     srand(time(NULL));
     for(int i = 0; i < 10; ++i){
@@ -66,6 +67,7 @@ void arrayGenerator(int* ifNumbersGenerated, int* numbers){
     printf("Wygenerowano tablice!");
     waitingForKey();
 }
+
 void arrayPrinting(int* ifNumbersGenerated, int* numbers){
     if (*ifNumbersGenerated == 1){
         printf("Tablica liczb:\n");
@@ -78,8 +80,8 @@ void arrayPrinting(int* ifNumbersGenerated, int* numbers){
         notGeneratedError();
     }
 }
-void numbersAverage(int* ifNumbersGenerated, int* numbers){
 
+void numbersAverage(int* ifNumbersGenerated, int* numbers){
     if(*ifNumbersGenerated == 1){
         float suma = 0;
         for(int i = 0; i < 10; ++i){
@@ -92,6 +94,7 @@ void numbersAverage(int* ifNumbersGenerated, int* numbers){
         notGeneratedError();
     }
 }
+
 void numbersMedian(int* ifNumbersGenerated, int* numbers){
     if(*ifNumbersGenerated == 1){
         float median = 0;
@@ -103,6 +106,7 @@ void numbersMedian(int* ifNumbersGenerated, int* numbers){
         notGeneratedError();
     }
 }
+
 void numbersInfAndSup(int* ifNumbersGenerated, int* numbers){
     if(*ifNumbersGenerated == 1){
         int infimum = *numbers;
@@ -122,6 +126,7 @@ void numbersInfAndSup(int* ifNumbersGenerated, int* numbers){
         notGeneratedError();
     }
 }
+
 void notGeneratedError(void){
     printf("Nie wygenerowano jeszcze tablicy!\n");
     getchar();
@@ -129,6 +134,7 @@ void notGeneratedError(void){
     getchar();
     system("cls");
 }
+
 void waitingForKey(void){
     getchar();
     printf("\n\nNacisnij klawisz");
