@@ -12,9 +12,6 @@ int main(void){
     printfAndScanf("Podaj krotszy bok prostokata: %dteraz podaj dluzszy: %d",&a,&b);
     printf("%d %d",a,b);
 
-
-
-
     return 0;
 }
 

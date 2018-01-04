@@ -5,16 +5,20 @@
 
 void arrayGenerator(int*, int*);
 float weightedAverage(int*, int*);
+
 int main(void){
 
     srand(time(NULL));
+
     int sizeOfArray = 1;
+
     printf("Podaj rozmiar tablicy\n");
     scanf("%d", &sizeOfArray);
     if(sizeOfArray>1000000 || sizeOfArray < 1){
         printf("Podano zly rozmiar tablicy!");
         exit(1);
     }
+
     int numbers[sizeOfArray];
     int* pNumbers = numbers;
     int* pNumbersEnd = pNumbers+sizeOfArray;
@@ -29,8 +33,8 @@ void arrayGenerator(int* numbers, int* numbersEnd){
         printf("%d ", *numbers);
         numbers++;
     }
-
 }
+
 float weightedAverage(int* numbers, int* numbersEnd){
     float average =0;
     int weight = 0;

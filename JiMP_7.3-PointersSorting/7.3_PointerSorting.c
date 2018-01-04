@@ -20,6 +20,7 @@ int main(void){
 
     return 0;
 }
+
 void arrayGenerator(int* numbers){
     for(int i = 0; i < 10; ++i){
         *(numbers+i) = rand()%200;
@@ -27,6 +28,7 @@ void arrayGenerator(int* numbers){
     }
     printf("\n");
 }
+
 void pointerSort(int* pointers[]){
     for(int i = 0; i < 10; ++i){
         int changed = 0;
