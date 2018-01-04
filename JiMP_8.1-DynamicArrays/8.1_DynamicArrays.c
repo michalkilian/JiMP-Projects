@@ -1,3 +1,4 @@
+//Zastosowano flagi:  -Wall -pedantic -Wextra -Werror -std=c99
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -5,22 +6,21 @@ void numberCheck(int);
 void arrayOperations(int*,int);
 int compare(const void *, const void* );
 
-
 int main(void){
-
     int numberOfNumbers;
+    printf("Podaj rozmiar tablicy: ");
     scanf("%d",&numberOfNumbers);
     numberCheck(numberOfNumbers);
 
     int arrayOfNumbers[numberOfNumbers];
-
+    printf("Podaj elementy tablicy: ");
     for(int i = 0;i<numberOfNumbers;++i){
         if(scanf("%d", &arrayOfNumbers[i])==EOF){
-                if(i==0){
-                    exit(0);
-                }
-            numberOfNumbers = i;
-            break;
+            if(i==0){
+                exit(0);
+            }
+        numberOfNumbers = i;
+        break;
         }
     }
 
@@ -30,7 +30,6 @@ int main(void){
 }
 
 void numberCheck(int numberOfNumbers){
-
     if (numberOfNumbers>1000000 || numberOfNumbers < 1){
         printf("Bledny rozmiar tablicy!\n");
         exit(0);
@@ -69,17 +68,15 @@ void arrayOperations(int* array,int size){
         array[(size-1)/2];
     }
 
-    printf("Sum %d %o %X\n", sum,sum,sum);
-    printf("Mode %d %o %X\n",mode,mode,mode);
-    printf("Mean %0.2f %A\n",mean,mean);
-    printf("Median %0.2f %A\n",median,median);
+    printf("Suma %d %o %X\n", sum,sum,sum);
+    printf("Dominanta %d %o %X\n",mode,mode,mode);
+    printf("Srednia %0.2f %A\n",mean,mean);
+    printf("Mediana %0.2f %A\n",median,median);
 
 }
 
-int compare(const void * a, const void * b)
-{
-  if ( *(int*)a <  *(int*)b ) return -1;
-  else if ( *(int*)a == *(int*)b ) return 0;
-  else return 1;
-
+int compare(const void * a, const void * b){
+    if ( *(int*)a <  *(int*)b ) return -1;
+    else if ( *(int*)a == *(int*)b ) return 0;
+    else return 1;
 }
