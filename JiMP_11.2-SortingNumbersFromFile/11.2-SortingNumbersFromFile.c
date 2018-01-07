@@ -43,7 +43,7 @@ int openFile(char* filename,int* numbers,int argc,char* argv[]){
     else{
         saveNumbersToFile(argv[2],numbers,counter);
     }
-
+    free(numbers);
     return counter;
 }
 
