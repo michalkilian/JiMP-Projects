@@ -3,55 +3,60 @@
 #include <time.h>
 #include <stdlib.h>
 
-void matrixMultiplication(int matrix[2][2][2]);
-void matrixMerge(int matrix1[2][2], int matrix2[2][2], int mergedMatrix[2][2][2]);
-void matrixFiller(int matrix[2][2]);
-void matrixPrinter(int matrix[2][2]);
-//void matrixDeMerge(int mergedMatrix[2][2][2], int matrix1[2][2], int matrix2[2][2]);
+#define SIZE 2
 
-int main(void){
+void matrixMultiplication(int matrix[SIZE][SIZE][SIZE], int);
+void matrixMerge(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int mergedMatrix[SIZE][SIZE][SIZE], int);
+void matrixRandomFiller(int matrix[SIZE][SIZE], int);
+void matrixPrinter(int matrix[SIZE][SIZE], int);
+//void matrixDeMerge(int mergedMatrix[SIZE][SIZE][SIZE], int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE]);
 
+int main(void)
+{
     srand(time(NULL));
 
-    int matrix1[2][2];
-    int matrix2[2][2];
-    int mergedMatrix[2][2][2];
+    int matrix1[SIZE][SIZE];
+    int matrix2[SIZE][SIZE];
+    int mergedMatrix[SIZE][SIZE][SIZE];
 
-    matrixFiller(matrix1);
-    matrixFiller(matrix2);
+    matrixRandomFiller(matrix1, SIZE);
+    matrixRandomFiller(matrix2, SIZE);
 
     printf("Wylosowane macierze to: \n\n");
-    matrixPrinter(matrix1);
-    matrixPrinter(matrix2);
+    matrixPrinter(matrix1, SIZE);
+    matrixPrinter(matrix2, SIZE);
 
-    matrixMerge(matrix1,matrix2,mergedMatrix);
+    matrixMerge(matrix1, matrix2, mergedMatrix, SIZE);
     printf("Iloczyn macierzy wynosi: \n\n");
-    matrixMultiplication(mergedMatrix);
+    matrixMultiplication(mergedMatrix, SIZE);
 
     return 0;
 }
 
-void matrixFiller(int matrix[2][2]){
-
-    for(int i = 0; i <2;++i){
-        for (int j = 0; j<2; ++j){
+void matrixRandomFiller(int matrix[SIZE][SIZE], int size)
+{
+    for(int i = 0; i < size; ++i){
+        for (int j = 0; j < size; ++j){
                 matrix[i][j] = (rand()%201)-100;
         }
     }
 }
-void matrixPrinter(int matrix[2][2]){
-    for(int i = 0; i <2;++i){
-        for (int j = 0; j<2; ++j){
-                printf("%d ",matrix[i][j]);
+
+void matrixPrinter(int matrix[SIZE][SIZE], int size)
+{
+    for(int i = 0; i < size; ++i){
+        for (int j = 0; j < size; ++j){
+                printf("%3d ",matrix[i][j]);
         }
         printf("\n");
     }
     printf("\n");
 }
-void matrixMerge(int matrix1[2][2], int matrix2[2][2], int mergedMatrix[2][2][2]){
-    for (int i = 0; i < 2; ++i){
-        for(int j = 0; j < 2; ++j){
-            for(int k = 0; k<2;++k){
+
+void matrixMerge(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int mergedMatrix[SIZE][SIZE][SIZE], int size){
+    for (int i = 0; i < size; ++i){
+        for(int j = 0; j < size; ++j){
+            for(int k = 0; k < size; ++k){
                 if(i==0){
                 mergedMatrix[i][j][k]=matrix1[j][k];
                 }
@@ -62,22 +67,25 @@ void matrixMerge(int matrix1[2][2], int matrix2[2][2], int mergedMatrix[2][2][2]
         }
     }
 }
-void matrixMultiplication(int mergedMatrix[2][2][2]){
-    for (int i = 0; i<2;++i){
-        for(int j = 0; j < 2; ++j){
+void matrixMultiplication(int mergedMatrix[SIZE][SIZE][SIZE], int size)
+{
+    for (int i = 0; i < size; ++i){
+        for(int j = 0; j < size; ++j){
             int suma = 0;
-            for(int k = 0; k < 2;++k){
-                suma += mergedMatrix[0][i][k]*mergedMatrix[1][k][j];
+            for(int k = 0; k < size; ++k){
+                suma += mergedMatrix[0][i][k] * mergedMatrix[1][k][j];
             }
-            printf("%d ",suma);
+            printf("%5d ",suma);
         }
         printf("\n");
     }
 }
-/*void matrixDeMerge(int mergedMatrix[2][2][2], int matrix1[2][2], int matrix2[2][2]){
-    for (int i = 0; i < 2; ++i){
-        for(int j = 0; j < 2; ++j){
-            for(int k = 0; k<2;++k){
+
+/*void matrixDeMerge(int mergedMatrix[SIZE][SIZE][SIZE, int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int size)
+{
+    for (int i = 0; i < size; ++i){
+        for(int j = 0; j < size; ++j){
+            for(int k = 0; k < size; ++k){
                 if(i==0){
                 matrix1[j][k]=mergedMatrix[i][j][k];
                 }

@@ -9,8 +9,8 @@ void matrixFiller(int matrix[SIZE][SIZE]);
 void matrixPrinter(int matrix[SIZE][SIZE]);
 int matrixDeterminant(int matrix[SIZE][SIZE]);
 
-int main(void){
-
+int main(void)
+{
     int matrix[SIZE][SIZE];
 
     srand(time(NULL));
@@ -25,8 +25,8 @@ int main(void){
 
 void matrixFiller(int matrix[SIZE][SIZE]){
 
-    for(int i = 0; i <3;++i){
-        for (int j = 0; j<3; ++j){
+    for(int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
                 matrix[i][j] = rand()%11;
         }
     }
@@ -34,8 +34,8 @@ void matrixFiller(int matrix[SIZE][SIZE]){
 
 void matrixPrinter(int matrix[SIZE][SIZE]){
 
-    for(int i = 0; i <SIZE;++i){
-        for (int j = 0; j<SIZE; ++j){
+    for(int i = 0; i < SIZE; ++i){
+        for (int j = 0; j < SIZE; ++j){
                 printf("%d ",matrix[i][j]);
         }
         printf("\n");
@@ -44,7 +44,7 @@ void matrixPrinter(int matrix[SIZE][SIZE]){
 
 int matrixDeterminant(int matrix[SIZE][SIZE]){
     int determinant = 0;
-    for(int i = 0;i <3; ++i)
+    for(int i = 0; i < SIZE; ++i)
         determinant += (matrix[0][i]*(matrix[1][(i+1)%SIZE]*matrix[2][(i+2)%SIZE]) - (matrix[0][i]*matrix[1][(i+2)%SIZE]*matrix[2][(i+1)%SIZE]));
     return determinant;
 }
