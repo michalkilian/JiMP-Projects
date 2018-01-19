@@ -12,9 +12,9 @@ void numbersInfAndSup(int*, int*);
 void notGeneratedError(void);
 void waitingForKey(void);
 
-int main(void){
-
-    int numbers[]={0,0,0,0,0,0,0,0,0,0};
+int main(void)
+{
+    int numbers[]={0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     int ifNumbersGenerated = 0;
     int* pIfNumberGenerated = &ifNumbersGenerated;
     int* pNumbers = numbers;
@@ -26,10 +26,14 @@ int main(void){
     return 0;
 }
 
-void wybor(int* ifNumbersGenerated, int *numbers){
+void wybor(int* ifNumbersGenerated, int *numbers)
+{
     int n = 0;
-    printf("\t-----MENU-----\n\n1. Losowanie tablicy 10 liczb.\n\n2. Wyswietlanie tablicy\n\n3. Liczenie sredniej liczb"
-    "\n\n4. Liczenie mediany liczb\n\n5. Liczenie min/max elementu\n\n6. Wyjscie\n\nPodaj liczbe: ");
+    printf("\t-----MENU-----\n\n"
+            "1. Losowanie tablicy 10 liczb.\n\n"
+            "2. Wyswietlanie tablicy\n\n"
+            "3. Liczenie sredniej liczb\n\n"
+            "Podaj liczbe: ");
     scanf("%d", &n);
     switch (n)
     {
@@ -58,7 +62,8 @@ void wybor(int* ifNumbersGenerated, int *numbers){
     }
 }
 
-void arrayGenerator(int* ifNumbersGenerated, int* numbers){
+void arrayGenerator(int* ifNumbersGenerated, int* numbers)
+{
     srand(time(NULL));
     for(int i = 0; i < 10; ++i){
         *(numbers+i) = rand()%200;
@@ -68,7 +73,8 @@ void arrayGenerator(int* ifNumbersGenerated, int* numbers){
     waitingForKey();
 }
 
-void arrayPrinting(int* ifNumbersGenerated, int* numbers){
+void arrayPrinting(int* ifNumbersGenerated, int* numbers)
+{
     if (*ifNumbersGenerated == 1){
         printf("Tablica liczb:\n");
         for(int i = 0; i < 10; ++i){
@@ -81,7 +87,8 @@ void arrayPrinting(int* ifNumbersGenerated, int* numbers){
     }
 }
 
-void numbersAverage(int* ifNumbersGenerated, int* numbers){
+void numbersAverage(int* ifNumbersGenerated, int* numbers)
+{
     if(*ifNumbersGenerated == 1){
         float suma = 0;
         for(int i = 0; i < 10; ++i){
@@ -95,7 +102,8 @@ void numbersAverage(int* ifNumbersGenerated, int* numbers){
     }
 }
 
-void numbersMedian(int* ifNumbersGenerated, int* numbers){
+void numbersMedian(int* ifNumbersGenerated, int* numbers)
+{
     if(*ifNumbersGenerated == 1){
         float median = 0;
         median=(*(numbers+4)+(*(numbers+5)))/2;
@@ -107,7 +115,8 @@ void numbersMedian(int* ifNumbersGenerated, int* numbers){
     }
 }
 
-void numbersInfAndSup(int* ifNumbersGenerated, int* numbers){
+void numbersInfAndSup(int* ifNumbersGenerated, int* numbers)
+{
     if(*ifNumbersGenerated == 1){
         int infimum = *numbers;
         int supremum = *numbers;
@@ -127,7 +136,8 @@ void numbersInfAndSup(int* ifNumbersGenerated, int* numbers){
     }
 }
 
-void notGeneratedError(void){
+void notGeneratedError(void)
+{
     printf("Nie wygenerowano jeszcze tablicy!\n");
     getchar();
     printf("Nacisnij klawisz");
@@ -135,7 +145,8 @@ void notGeneratedError(void){
     system("cls");
 }
 
-void waitingForKey(void){
+void waitingForKey(void)
+{
     getchar();
     printf("\n\nNacisnij klawisz");
     getchar();
