@@ -9,7 +9,6 @@ void matrixMultiplication(int matrix[SIZE][SIZE][SIZE], int);
 void matrixMerge(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int mergedMatrix[SIZE][SIZE][SIZE], int);
 void matrixRandomFiller(int matrix[SIZE][SIZE], int);
 void matrixPrinter(int matrix[SIZE][SIZE], int);
-//void matrixDeMerge(int mergedMatrix[SIZE][SIZE][SIZE], int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE]);
 
 int main(void)
 {
@@ -37,7 +36,7 @@ void matrixRandomFiller(int matrix[SIZE][SIZE], int size)
 {
     for(int i = 0; i < size; ++i){
         for (int j = 0; j < size; ++j){
-                matrix[i][j] = (rand()%201)-100;
+            matrix[i][j] = (rand()%201)-100;
         }
     }
 }
@@ -46,19 +45,20 @@ void matrixPrinter(int matrix[SIZE][SIZE], int size)
 {
     for(int i = 0; i < size; ++i){
         for (int j = 0; j < size; ++j){
-                printf("%3d ",matrix[i][j]);
+            printf("%3d ",matrix[i][j]);
         }
         printf("\n");
     }
     printf("\n");
 }
 
-void matrixMerge(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int mergedMatrix[SIZE][SIZE][SIZE], int size){
+void matrixMerge(int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int mergedMatrix[SIZE][SIZE][SIZE], int size)
+{
     for (int i = 0; i < size; ++i){
         for(int j = 0; j < size; ++j){
             for(int k = 0; k < size; ++k){
                 if(i==0){
-                mergedMatrix[i][j][k]=matrix1[j][k];
+                    mergedMatrix[i][j][k]=matrix1[j][k];
                 }
                 else{
                     mergedMatrix[i][j][k]=matrix2[j][k];
@@ -80,20 +80,3 @@ void matrixMultiplication(int mergedMatrix[SIZE][SIZE][SIZE], int size)
         printf("\n");
     }
 }
-
-/*void matrixDeMerge(int mergedMatrix[SIZE][SIZE][SIZE, int matrix1[SIZE][SIZE], int matrix2[SIZE][SIZE], int size)
-{
-    for (int i = 0; i < size; ++i){
-        for(int j = 0; j < size; ++j){
-            for(int k = 0; k < size; ++k){
-                if(i==0){
-                matrix1[j][k]=mergedMatrix[i][j][k];
-                }
-                else{
-                    matrix2[j][k]=mergedMatrix[i][j][k];
-                }
-            }
-        }
-    }
-}
-*/

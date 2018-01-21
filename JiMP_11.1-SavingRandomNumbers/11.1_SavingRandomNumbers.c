@@ -5,49 +5,52 @@
 #include <time.h>
 #include <string.h>
 
-void generateRandomNumbers(int,int[]);
-void saveNumbersToFile(char*,int*,int);
-void errorsCheck(int,int);
+void generateRandomNumbers(const int, int[]);
+void saveNumbersToFile(char*, int*, const int);
+void errorsCheck(int, const int);
 
 
-int main(int argc, char*argv[]){
-
+int main(int argc, char*argv[])
+{
     srand(time(NULL));
-    int numberOfNumbers = atoi(argv[1]);
-    errorsCheck(argc,numberOfNumbers);
+    const int numberOfNumbers = atoi(argv[1]);
+    errorsCheck(argc, numberOfNumbers);
     int randomNumbers[numberOfNumbers];
 
-    generateRandomNumbers(numberOfNumbers,randomNumbers);
-    saveNumbersToFile(argv[2],randomNumbers,numberOfNumbers);
+    generateRandomNumbers(numberOfNumbers, randomNumbers);
+    saveNumbersToFile(argv[2], randomNumbers, numberOfNumbers);
 
     return 0;
 }
 
-void generateRandomNumbers(int numberOfNumbers,int randomNumbers[]){
+void generateRandomNumbers(const int numberOfNumbers, int randomNumbers[])
+{
     for(int i = 0; i < numberOfNumbers; ++i){
-        randomNumbers[i]=rand()%1001;
+        randomNumbers[i] = rand() % 1001;
     }
 }
 
-void saveNumbersToFile(char* filename,int* randomNumbers,int numberOfNumbers){
+void saveNumbersToFile(char* filename, int* randomNumbers, const int numberOfNumbers)
+{
     FILE *f = fopen(filename,"w");
     if(f == NULL){
         printf("Blad podczas otwierania pliku!");
     }
     else{
         for (int i = 0; i < numberOfNumbers; ++i){
-            fprintf(f,"%d\n",randomNumbers[i]);
+            fprintf(f, "%d\n", randomNumbers[i]);
         }
     }
     fclose(f);
 }
 
-void errorsCheck(int argc,int numberOfNumbers){
+void errorsCheck(int argc, const int numberOfNumbers)
+{
     if(argc != 3){
         printf("Podano bledno ilosc argumentow!");
         exit(1);
     }
-    else if(numberOfNumbers <=0){
+    else if(numberOfNumbers <= 0){
         printf("Blednie podano ilosc liczb do wygenerowania!");
         exit(2);
     }

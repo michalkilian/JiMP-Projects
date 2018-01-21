@@ -3,7 +3,7 @@
 #include <time.h>
 #include <string.h>
 
-int CalculateDaysInMonth(int,int);
+int calculateDaysInMonth(int,int);
 int firstDay(int,int);
 void calendarPrinter(int, int);
 
@@ -16,7 +16,7 @@ int main(void)
 
     int month = ptr_time->tm_mon+1;
     int year = ptr_time->tm_year+1900;
-    int daysInMonth = CalculateDaysInMonth(month,year);
+    int daysInMonth = calculateDaysInMonth(month,year);
     int dayOfMonth = ptr_time->tm_mday;
     int dayOfWeek = ptr_time->tm_wday;
     int firstDayOfMonth = firstDay(dayOfMonth,dayOfWeek);
@@ -37,35 +37,37 @@ int firstDay(int dayOfMonth,int dayOfWeek)
     return firstDay;
 }
 
-int CalculateDaysInMonth(int month,int year)
+int calculateDaysInMonth(int month,int year)
 {
-    int CalculateDaysInMonth = 0;
+    int calculateDaysInMonth = 0;
     if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12){
-        CalculateDaysInMonth = 31;
+        calculateDaysInMonth = 31;
     }
     else if( month == 2) {
         if(year % 4 != 0){
-            CalculateDaysInMonth = 28;
+            calculateDaysInMonth = 28;
         }
         else if(year % 400 == 100 || year % 400 == 200 || year % 400 == 300){
-            CalculateDaysInMonth = 28;
+            calculateDaysInMonth = 28;
         }
         else {
-            CalculateDaysInMonth = 29;
+            calculateDaysInMonth = 29;
         }
     }
-    else CalculateDaysInMonth = 30;
-    return CalculateDaysInMonth;
+    else calculateDaysInMonth = 30;
+    return calculateDaysInMonth;
 }
 
-void calendarPrinter(int CalculateDaysInMonth, int firstDayOfMonth)
+void calendarPrinter(int calculateDaysInMonth, int firstDayOfMonth)
 {
     printf("\nMon Tue Wed Thu Fri Sat Sun\n");
     for(int i = 1; i < firstDayOfMonth; ++i){
         printf("    ");
     }
-    for (int i = 1; i <= CalculateDaysInMonth; ++i){
-        if(i<10) printf("0");
+    for (int i = 1; i <= calculateDaysInMonth; ++i){
+        if(i<10){
+            printf("0");
+        }
         printf("%d  ", i);
         if((i+firstDayOfMonth-1) % 7 == 0) printf("\n");
     }

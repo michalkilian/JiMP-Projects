@@ -13,16 +13,21 @@ typedef struct{
 
 Questions* loadQuestions(int*);
 void addQuestion(void);
-void printQuestion(int,Questions*,int*,int);
+void printQuestion(int,Questions*, int*, int);
 void printLogo(void);
 void mainLoop(void);
 
-int main(int argc,char* argv[]){
+int main(int argc, char* argv[])
+{
     srand(time(NULL));
 
     if(argc>1){
-        if(strcmp(argv[1],"--add")==0) addQuestion();
-        else printf("Wrong command-line argument!");
+        if(strcmp(argv[1],"--add") == 0){
+            addQuestion();
+        }
+        else{
+            printf("Wrong command-line argument!");
+        }
     }
     else{
         while(1){
@@ -32,8 +37,10 @@ int main(int argc,char* argv[]){
     return 0;
 }
 
-void mainLoop(void){
-    int prizes[13]={0,500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000};
+void mainLoop(void)
+{
+    int numberOfLevels = 12;
+    int prizes[]={0, 500, 1000, 2000, 5000, 10000, 20000, 40000, 75000, 125000, 250000, 500000, 1000000};
 
     printLogo();
     printf("Press p to play new game or other character to exit: ");
@@ -46,35 +53,35 @@ void mainLoop(void){
         Questions* question = loadQuestions(pCounter);
         printf("\nDuring question type x to leave with all the money you have won\n\n");
         int usedQuestions[counter];
-        int questionNumber = rand()%counter;
+        int questionNumber = rand() % counter;
 
-        for(int i = 0; i < 12;++i){
-            while(usedQuestions[questionNumber]==1){
-                questionNumber = rand()%counter;
+        for(int level = 0; level < numberOfLevels; ++level){
+            while(usedQuestions[questionNumber] == 1){
+                questionNumber = rand() % counter;
             }
-            usedQuestions[questionNumber]=1;
-            printQuestion(questionNumber,question,prizes,i);
+            usedQuestions[questionNumber] = 1;
+            printQuestion(questionNumber, question,prizes, level);
 
-            int userAnswer =-1;
-            while((userAnswer-'A'>3 || userAnswer-'A'<0) && userAnswer!='x'){
-                userAnswer=getchar();
+            int userAnswer = -1;
+            while((userAnswer-'A' > 3 || userAnswer-'A' < 0) && userAnswer != 'x'){
+                userAnswer = getchar();
                 fflush(stdin);
             }
-            if (userAnswer-65==((question+questionNumber)->correctAnswer)){
+            if (userAnswer-65 == ((question+questionNumber)->correctAnswer)){
                 printf("\nCorrect!\n\n");
-                if(i == 11){
+                if(level == 11){
                     printf("You won 1000000$!!!");
                 }
             }
-            else if(userAnswer==120){
+            else if(userAnswer == 'x'){
 
-                printf("Congratulation! You won %d$",prizes[i]);
+                printf("Congratulation! You won %d$", prizes[level]);
                 break;
             }
             else{
                 printf("\nWrong! You lose!\n\n");
-                if(i >1){
-                    if(i>6){
+                if(level > 1){
+                    if(level > 6){
                         printf("You have guaranteed 40000$");
                     }
                     else{
@@ -91,17 +98,18 @@ void mainLoop(void){
     }
 }
 
-Questions* loadQuestions(int *n){
-    FILE *file = fopen("questions.bin","rb");
+Questions* loadQuestions(int *n)
+{
+    FILE *file = fopen("questions.bin", "rb");
     Questions q, *qs = NULL;
     *n = 0;
-    if(file==NULL){
+    if(file == NULL){
         printf("Error during opening a file!");
         exit(1);
     }
-    while (fread(&q, sizeof(Questions),1,file)==1){
-        qs = (Questions*) realloc(qs,((*n)+1)*sizeof(Questions));
-        *(qs+(*n))=q;
+    while (fread(&q, sizeof(Questions), 1, file) == 1){
+        qs = (Questions*) realloc(qs, ((*n)+1)*sizeof(Questions));
+        *(qs+(*n)) = q;
         ++(*n);
     }
     fclose(file);
@@ -109,19 +117,21 @@ Questions* loadQuestions(int *n){
     return qs;
 }
 
-void addQuestion(void){
+void addQuestion(void)
+{
+    int numberOfAnswers = 4;
     Questions question;
-    FILE* file = fopen("questions.bin","ab");
+    FILE* file = fopen("questions.bin", "ab");
     char c;
     printf("Question: ");
     fflush(stdin);
-    scanf("%[^\n]s",question.questionText);
+    scanf("%[^\n]s", question.questionText);
     printf("Possible answers: ");
     fflush(stdin);
 
-    for(int i = 0; i < 4; ++i){
+    for(int i = 0; i < numberOfAnswers; ++i){
         printf("-> %c: ",'A'+i);
-        scanf("%[^\n]s",question.answers[i]);
+        scanf("%[^\n]s", question.answers[i]);
         fflush(stdin);
     }
 
@@ -129,20 +139,23 @@ void addQuestion(void){
     scanf("%c",&c);
     question.correctAnswer = c-'A';
 
-    fwrite(&question,sizeof(Questions),1,file);
+    fwrite(&question, sizeof(Questions), 1, file);
     fclose(file);
 }
 
-void printQuestion(int questionNumber,Questions* question,int* prizes,int level){
-    printf("Question for %d$\n%s\n\n",prizes[level+1],(question+questionNumber)->questionText);
-    for(int j = 0; j < 4;++j){
-        printf("[%c]: %s\n",j+'A',(question+questionNumber)->answers[j]);
+void printQuestion(int questionNumber, Questions* question, int* prizes, int level)
+{
+    int numberOfAnswers = 4;
+    printf("Question for %d$\n%s\n\n", prizes[level+1], (question+questionNumber)->questionText);
+    for(int j = 0; j < numberOfAnswers; ++j){
+        printf("[%c]: %s\n", j+'A', (question+questionNumber)->answers[j]);
     }
     printf("\n");
 }
 
 
-void printLogo(void){
+void printLogo(void)
+{
     printf(
 "\n\n  sSSSs   d       b d sSSSSSs      d sssssssss\n"
 " S     S  S       S S      s       S     S\n"

@@ -6,8 +6,8 @@
 void arrayGenerator(int*, int*);
 float weightedAverage(int*, int*);
 
-int main(void){
-
+int main(void)
+{
     srand(time(NULL));
 
     int sizeOfArray = 1;
@@ -27,23 +27,25 @@ int main(void){
     return 0;
 }
 
-void arrayGenerator(int* numbers, int* numbersEnd){
-    while(numbers<numbersEnd){
+void arrayGenerator(int* numbers, int* numbersEnd)
+{
+    while(numbers < numbersEnd){
         *numbers = rand()%20;
         printf("%d ", *numbers);
         numbers++;
     }
 }
 
-float weightedAverage(int* numbers, int* numbersEnd){
-    float average =0;
+float weightedAverage(int* numbers, int* numbersEnd)
+{
+    float average = 0;
     int weight = 0;
-    for(int i = 1;;i++){
-        if(numbers==numbersEnd){
+    for(int i = 1; ; i++){
+        if(numbers == numbersEnd){
             break;
         }
-        average+=((*numbers)*i);
-        weight +=i;
+        average += ((*numbers) * i);
+        weight += i;
         numbers++;
     }
     return average/weight;
