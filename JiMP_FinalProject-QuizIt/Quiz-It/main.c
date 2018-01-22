@@ -11,9 +11,9 @@ typedef struct{
     int correctAnswer;
 }Questions;
 
-Questions* loadQuestions(int*);
+Questions* loadQuestions(int* counter);
 void addQuestion(void);
-void printQuestion(int,Questions*, int*, int);
+void printQuestion(int questionNumber,const Questions* question, const int* prizes, int level);
 void printLogo(void);
 void mainLoop(void);
 
@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 void mainLoop(void)
 {
     int numberOfLevels = 12;
-    int prizes[]={0, 500, 1000, 2000, 5000, 10000, 20000, 40000, 75000, 125000, 250000, 500000, 1000000};
+    const int prizes[]={0, 500, 1000, 2000, 5000, 10000, 20000, 40000, 75000, 125000, 250000, 500000, 1000000};
 
     printLogo();
     printf("Press p to play new game or other character to exit: ");
@@ -98,19 +98,19 @@ void mainLoop(void)
     }
 }
 
-Questions* loadQuestions(int *n)
+Questions* loadQuestions(int *counter)
 {
     FILE *file = fopen("questions.bin", "rb");
     Questions q, *qs = NULL;
-    *n = 0;
+    *counter = 0;
     if(file == NULL){
         printf("Error during opening a file!");
         exit(1);
     }
     while (fread(&q, sizeof(Questions), 1, file) == 1){
-        qs = (Questions*) realloc(qs, ((*n)+1)*sizeof(Questions));
-        *(qs+(*n)) = q;
-        ++(*n);
+        qs = (Questions*) realloc(qs, ((*counter)+1)*sizeof(Questions));
+        *(qs+(*counter)) = q;
+        ++(*counter);
     }
     fclose(file);
 
@@ -143,7 +143,7 @@ void addQuestion(void)
     fclose(file);
 }
 
-void printQuestion(int questionNumber, Questions* question, int* prizes, int level)
+void printQuestion(int questionNumber, const Questions* question, const int* prizes, int level)
 {
     int numberOfAnswers = 4;
     printf("Question for %d$\n%s\n\n", prizes[level+1], (question+questionNumber)->questionText);

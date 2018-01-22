@@ -20,8 +20,8 @@ int main(void)
             if(i == 0){
                 exit(0);
             }
-        numberOfNumbers = i;
-        break;
+            numberOfNumbers = i;
+            break;
         }
     }
 
